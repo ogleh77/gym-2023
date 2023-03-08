@@ -77,6 +77,7 @@ public class CustomerBuilder {
 //    }
 
 
+
     public Customers build() {
         return new Customers(customerId, firstName, middleName, lastName, phone, gander, shift, address, image,
                 weight, whoAdded);

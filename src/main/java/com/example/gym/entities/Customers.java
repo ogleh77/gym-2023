@@ -1,7 +1,6 @@
 package com.example.gym.entities;
 
 import com.jfoenix.controls.JFXButton;
-import javafx.beans.Observable;
 
 public class Customers {
 
@@ -79,16 +78,23 @@ public class Customers {
     }
 
     public JFXButton getUpdate() {
+        this.update = new JFXButton("Update");
+        this.update.setStyle("-fx-background-color: #1e6e66;-fx-text-fill: white;-fx-pref-width: 100;-fx-font-size: 15");
         return update;
     }
 
     public JFXButton getPaymentBtn() {
+        this.paymentBtn = new JFXButton("Payment");
+        this.paymentBtn.setStyle("-fx-background-color: dodgerblue;-fx-text-fill: white;-fx-pref-width: 100;-fx-font-size: 15");
         return paymentBtn;
     }
 
     public JFXButton getInformation() {
+        this.information = new JFXButton("Information");
+        this.information.setStyle("-fx-background-color: #328ca8;-fx-text-fill: white;-fx-pref-width: 100;-fx-font-size: 15");
         return information;
     }
+
 
     @Override
     public String toString() {

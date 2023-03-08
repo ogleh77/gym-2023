@@ -7,10 +7,10 @@ import javafx.collections.ObservableList;
 
 public class Data {
 
-    private static ObservableList<Customers> customers;
+    private ObservableList<Customers> customers;
 
 
-    public static ObservableList<Customers> customers() {
+    public ObservableList<Customers> customers() {
         if (customers == null) {
             customers = FXCollections.observableArrayList();
         }
@@ -27,6 +27,9 @@ public class Data {
                 .setWhoAdded("Ogleh")
                 .build();
 
+        customer.getInformation();
+        customer.getUpdate();
+        customer.getPaymentBtn();
         Customers customer2 = new CustomerBuilder()
                 .setImage(null)
                 .setAddress("Tuurta")
@@ -39,7 +42,9 @@ public class Data {
                 .setWeight(65)
                 .setWhoAdded("Muuse")
                 .build();
-
+        customer2.getInformation();
+        customer2.getUpdate();
+        customer2.getPaymentBtn();
         customers.addAll(customer, customer2);
 
 
