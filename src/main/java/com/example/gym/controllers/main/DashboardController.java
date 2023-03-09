@@ -1,6 +1,5 @@
 package com.example.gym.controllers.main;
 
-import com.example.gym.controllers.HomeController;
 import com.example.gym.helpers.CommonClass;
 import javafx.application.Platform;
 import javafx.fxml.FXML;

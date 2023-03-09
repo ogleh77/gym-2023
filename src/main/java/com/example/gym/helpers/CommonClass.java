@@ -4,7 +4,8 @@ import animatefx.animation.FadeIn;
 import animatefx.animation.Shake;
 import animatefx.animation.SlideInLeft;
 import animatefx.animation.SlideInRight;
-import com.example.gym.entities.Customers;
+import com.example.gym.entities.main.Customers;
+import com.example.gym.entities.service.Gym;
 import com.example.gym.entities.service.Users;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -91,6 +92,7 @@ public abstract class CommonClass {
         }
         return isValid;
     }
+
     protected FXMLLoader openWindow(String url, BorderPane borderPane, VBox sidePane, HBox menu, StackPane notificationsHBox) throws IOException {
 //        if (sidePane != null && !sidePane.isVisible()) {
 //            sidePane.setVisible(true);
@@ -123,6 +125,7 @@ public abstract class CommonClass {
         borderPane.setCenter(anchorPane);
         return loader;
     }
+
     //Alert when error occur
     public Alert errorMessage(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);

@@ -1,5 +1,6 @@
-package com.example.gym.entities;
+package com.example.gym.entities.main;
 
+import javafx.collections.ObservableList;
 
 public class CustomerBuilder {
     private int customerId;
@@ -13,7 +14,7 @@ public class CustomerBuilder {
     private String image;
     private double weight;
     private String whoAdded;
-    //private ObservableList<Payments> payments;
+    private ObservableList<Payments> payments;
 
 
     public CustomerBuilder setCustomerId(int customerId) {
@@ -71,11 +72,10 @@ public class CustomerBuilder {
         return this;
     }
 
-//    public CustomerBuilder setPayments(ObservableList<Payments> payments) {
-//        this.payments = payments;
-//        return this;
-//    }
-
+    public CustomerBuilder setPayments(ObservableList<Payments> payments) {
+        this.payments = payments;
+        return this;
+    }
 
 
     public Customers build() {

@@ -1,8 +1,8 @@
 package com.example.gym.controllers.main;
 
-import com.example.gym.dto.CustomerService;
-import com.example.gym.entities.Customers;
-import com.example.gym.entities.service.Users;
+ import com.example.gym.dto.main.CustomerService;
+ import com.example.gym.entities.main.Customers;
+ import com.example.gym.entities.service.Users;
 import com.example.gym.helpers.CommonClass;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;

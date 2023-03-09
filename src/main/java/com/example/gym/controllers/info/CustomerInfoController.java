@@ -1,15 +1,16 @@
-package com.example.gym.controllers;
-
-import com.example.gym.entities.Customers;
-import com.example.gym.entities.Payments;
+package com.example.gym.controllers.info;
+import com.example.gym.entities.main.Customers;
+import com.example.gym.entities.main.Payments;
 import com.example.gym.helpers.CommonClass;
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;

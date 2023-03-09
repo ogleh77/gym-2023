@@ -1,4 +1,4 @@
-package com.example.gym.models;
+package com.example.gym.models.services;
 
 import com.example.gym.entities.service.Users;
 import com.example.gym.helpers.DbConnection;
@@ -7,7 +7,7 @@ import javafx.collections.ObservableList;
 
 import java.sql.*;
 
-public class UserModel{
+public class UserModel {
     private final static Connection connection = DbConnection.getConnection();
 
     public UserModel() {
@@ -17,8 +17,18 @@ public class UserModel{
     public void insert(Users users) throws SQLException {
         String insertUserQuery = "INSERT INTO users(first_name, last_name, phone, gender, shift, username, password, image, role) " +
                 "VALUES (?,?,?,?,?,?,?,?,?)";
-        PreparedStatement ps = connection.prepareStatement(insertUserQuery);
+        insertOrUpdateUser(users, insertUserQuery);
+        System.out.println("User inserted..");
+    }
 
+    public void update(Users users) throws SQLException {
+        String updateUser = "UPDATE users SET first_name=?,last_name=?,phone=?,gender=?,shift=?,username=?,password=?,image=?,role=? \n" +
+                "WHERE username='" + users.getUsername() + "'";
+        insertOrUpdateUser(users, updateUser);
+    }
+
+    private void insertOrUpdateUser(Users users, String updateUser) throws SQLException {
+        PreparedStatement ps = connection.prepareStatement(updateUser);
         ps.setString(1, users.getFirstName());
         ps.setString(2, users.getLastName());
         ps.setString(3, users.getPhone());
@@ -30,7 +40,6 @@ public class UserModel{
         ps.setString(9, users.getRole());
         ps.executeUpdate();
         ps.close();
-        System.out.println("User inserted..");
     }
 
     public ObservableList<Users> fetch() throws SQLException {

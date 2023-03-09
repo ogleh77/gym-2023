@@ -8,9 +8,10 @@ public class Users {
     private final String gender;
     private final String shift;
     private final String username;
-    private final String password;
+    private  String password;
     private final String image;
     private final String role;
+
 
     public Users(int userId, String firstName, String lastName, String phone, String gender, String shift, String username, String password, String image, String role) {
         this.userId = userId;
@@ -77,8 +78,30 @@ public class Users {
         return role;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    //    @Override
+//    public String toString() {
+//        return "[" + username + " role:- " + role + "]\n";
+//    }
+//
+
+
     @Override
     public String toString() {
-        return "[" + username + " role:- " + role + "]\n";
+        return "Users{" +
+                "userId=" + userId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phone='" + phone + '\'' +
+                ", gender='" + gender + '\'' +
+                ", shift='" + shift + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", image='" + image + '\'' +
+                ", role='" + role + '\'' +
+                '}';
     }
 }
