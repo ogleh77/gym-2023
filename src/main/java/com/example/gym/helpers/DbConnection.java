@@ -1,4 +1,4 @@
-package com.example.salmaan.helpers;
+package com.example.gym.helpers;
 
 import javafx.scene.control.Alert;
 
@@ -17,7 +17,7 @@ public abstract class DbConnection {
         try {
             if (connection == null) {
                 Class.forName("org.sqlite.JDBC");
-                connection = DriverManager.getConnection("jdbc:sqlite:src/database/database.db");
+                connection = DriverManager.getConnection("jdbc:sqlite:database/database.db");
                 System.out.println("Opened database successfully");
             }
         } catch (Exception e) {

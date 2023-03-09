@@ -1,20 +1,23 @@
-package com.example.salmaan.helpers;
+package com.example.gym.helpers;
 
+import animatefx.animation.FadeIn;
 import animatefx.animation.Shake;
 import animatefx.animation.SlideInLeft;
 import animatefx.animation.SlideInRight;
-import com.example.salmaan.entities.main.Customers;
-import com.example.salmaan.entities.services.Gym;
-import com.example.salmaan.entities.services.Users;
+import com.example.gym.entities.Customers;
+import com.example.gym.entities.service.Users;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 
 public abstract class CommonClass {
@@ -28,15 +31,17 @@ public abstract class CommonClass {
     private Shake shake;
     private SlideInRight slideInRight;
     private SlideInLeft slideInLeft;
+    private FadeIn fadeIn;
 
     protected Customers customer;
 
     protected Users activeUser;
 
+    protected BorderPane borderPane;
 
-    protected Gym currentGym;
+    //protected Gym currentGym;
     public final String[] images = {
-            "/com/example/salmaan/style/icons/icons/loading_5.gif",
+            "/com/example/gym/style/icons/loading_5.gif",
             "/com/example/randomimage/random-images/man.gif"
     };
 
@@ -86,7 +91,38 @@ public abstract class CommonClass {
         }
         return isValid;
     }
+    protected FXMLLoader openWindow(String url, BorderPane borderPane, VBox sidePane, HBox menu, StackPane notificationsHBox) throws IOException {
+//        if (sidePane != null && !sidePane.isVisible()) {
+//            sidePane.setVisible(true);
+//            slideInLeft.setNode(sidePane);
+//            slideInLeft.play();
+//            // System.out.println("In Opener The ref is " + DashboardController.borderPane);
+//            // DashboardController.borderPane.setLeft(sidePane);
+//            borderPane.setLeft(sidePane);
+//        }
+        //side menu
 
+        if (menu != null) {
+            menu.setVisible(true);
+            getFadeIn().setNode(menu);
+            getSlideInLeft().playOnFinished(fadeIn);
+            getFadeIn().play();
+        }
+        //top profile
+        if (notificationsHBox != null) {
+            notificationsHBox.setVisible(true);
+            getFadeIn().setNode(notificationsHBox);
+            getFadeIn().play();
+        }
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(url));
+        AnchorPane anchorPane = loader.load();
+        getSlideInRight().setNode(anchorPane);
+        getSlideInRight().play();
+        // DashboardController.borderPane.setCenter(anchorPane);
+        //  System.out.println("In Opener The ref is " + DashboardController.borderPane);
+        borderPane.setCenter(anchorPane);
+        return loader;
+    }
     //Alert when error occur
     public Alert errorMessage(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -136,6 +172,7 @@ public abstract class CommonClass {
         paidBy.addAll("eDahab", "Zaad service", "other");
         return paidBy;
     }
+
     public ObservableList<Control> getMandatoryFields() {
         if (mandatoryFields == null) {
             mandatoryFields = FXCollections.observableArrayList();
@@ -158,6 +195,12 @@ public abstract class CommonClass {
         return slideInRight;
     }
 
+    private FadeIn getFadeIn() {
+        if (fadeIn == null) {
+            fadeIn = new FadeIn();
+        }
+        return fadeIn;
+    }
 
     private Shake getShake() {
         if (shake == null) {
@@ -166,9 +209,6 @@ public abstract class CommonClass {
         }
         return shake;
     }
-
-
-
 
     public void setCustomer(Customers customer) {
         this.customer = customer;
@@ -179,14 +219,17 @@ public abstract class CommonClass {
         this.activeUser = activeUser;
     }
 
-
-    public void setCurrentGym(Gym currentGym) {
-        this.currentGym = currentGym;
+    public void setBorderPane(BorderPane borderPane) {
+        this.borderPane = borderPane;
     }
+//    public void setCurrentGym(Gym currentGym) {
+//        this.currentGym = currentGym;
+//    }
 
 
-    public void setTitle(Label title) {
-        title.setText(currentGym.getGymName().toUpperCase() + "| eDahab: " +
-                currentGym.geteDahab() + "| Zaad: " + currentGym.getZaad());
-    }
+//    public void setTitle(Label title) {
+//        title.setText(currentGym.getGymName().toUpperCase() + "| eDahab: " +
+//                currentGym.geteDahab() + "| Zaad: " + currentGym.getZaad());
+//    }
+
 }

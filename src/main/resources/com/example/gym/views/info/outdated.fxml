@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="long-pane" stylesheets="@../style/css/long-pane.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gym.controllers.OutDatedController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="long-pane" stylesheets="@../../style/css/long-pane.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gym.controllers.info.OutDatedController">
     <Pagination fx:id="pagination" layoutX="41.0" layoutY="126.0" prefHeight="593.0" prefWidth="1070.0" />
     <HBox alignment="BOTTOM_CENTER" prefHeight="56.0" prefWidth="747.0" spacing="500.0" styleClass="top-pane">
         <Label fx:id="headerInfo" maxWidth="-Infinity" prefHeight="29.0" prefWidth="574.0" styleClass="top-label" text="NOTIFICATIONS">
@@ -25,7 +25,7 @@
                 <Insets left="10.0" />
             </HBox.margin>
             <ImageView fitHeight="27.0" fitWidth="32.0" pickOnBounds="true" styleClass="cancel-pane">
-                <Image url="@../../../../../../../../salmaan/src/main/resources/com/example/salmaan/style/style/icons/icons/icons8-close-window-48.png" />
+                <Image url="@../../../../../../../../../salmaan/src/main/resources/com/example/salmaan/style/style/icons/icons/icons8-close-window-48.png" />
             </ImageView>
         </HBox>
     </HBox>

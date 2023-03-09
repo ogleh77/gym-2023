@@ -1,4 +1,4 @@
-package com.example.salmaan.entities.services;
+package com.example.gym.entities.service;
 
 public class Users {
     private int userId;

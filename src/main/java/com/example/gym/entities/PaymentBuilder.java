@@ -1,6 +1,5 @@
-package com.example.salmaan.entity.main;
+package com.example.gym.entities;
 
-import com.example.salmaan.entity.service.Box;
 
 import java.time.LocalDate;
 
@@ -14,7 +13,7 @@ public class PaymentBuilder {
     private String paidBy;
     private double discount;
     private boolean poxing;
-    private Box box;
+//    private Box box;
     private String customerFK;
     private boolean online;
     private boolean pending;
@@ -65,10 +64,10 @@ public class PaymentBuilder {
         return this;
     }
 
-    public PaymentBuilder setBox(Box box) {
-        this.box = box;
-        return this;
-    }
+//    public PaymentBuilder setBox(Box box) {
+//        this.box = box;
+//        return this;
+//    }
 
     public PaymentBuilder setCustomerFK(String customerFK) {
         this.customerFK = customerFK;

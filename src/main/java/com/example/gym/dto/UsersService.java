@@ -1,8 +1,8 @@
-package com.example.salmaan.dao;
+package com.example.gym.dto;
 
-import com.example.salmaan.entities.services.Users;
-import com.example.salmaan.helpers.CustomException;
-import com.example.salmaan.models.UserModel;
+import com.example.gym.entities.service.Users;
+import com.example.gym.helpers.CustomException;
+import com.example.gym.models.UserModel;
 import javafx.collections.ObservableList;
 
 import java.sql.SQLException;
@@ -20,7 +20,6 @@ public class UsersService {
 
     public static void insertUser(Users user) throws CustomException {
         try {
-
             userModel.insert(user);
         } catch (SQLException e) {
             if (e.getMessage().contains("(UNIQUE constraint failed: users.username)")) {
@@ -31,17 +30,6 @@ public class UsersService {
         }
     }
 
-    //    public static void updateUser(Users user) throws CustomException {
-//        try {
-//            userModel.updateUser(user);
-//        } catch (SQLException e) {
-//            if (e.getMessage().contains("(UNIQUE constraint failed: users.username)")) {
-//                throw new CustomException("username-kan hore ayaa loo isticmalay fadlan dooro mid kale");
-//            } else {
-//                throw new CustomException("Khalad baa ka dhacay " + e.getMessage());
-//            }
-//        }
-//    }
     public static ObservableList<Users> users() throws SQLException {
         ObservableList<Users> users = null;
         try {

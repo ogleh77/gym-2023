@@ -1,4 +1,4 @@
-package com.example.gym.controllers;
+package com.example.gym.controllers.info;
 
 import com.example.gym.helpers.CommonClass;
 import com.jfoenix.controls.JFXButton;

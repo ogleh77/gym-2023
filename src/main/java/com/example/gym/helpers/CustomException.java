@@ -1,4 +1,4 @@
-package com.example.salmaan.helpers;
+package com.example.gym.helpers;
 
 import java.sql.SQLException;
 

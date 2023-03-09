@@ -13,7 +13,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
-import java.net.URL;
 import java.util.ResourceBundle;
 
 public class PaymentController extends CommonClass implements Initializable {
@@ -76,6 +75,6 @@ public class PaymentController extends CommonClass implements Initializable {
 
     @FXML
     void createPaymentHandler(ActionEvent event) {
-        System.out.println(getBorderPane());
+        ///System.out.println(getBorderPane());
     }
 }

@@ -111,7 +111,7 @@
                         </font>
                     </Text>
                 </VBox>
-                <HBox alignment="CENTER_LEFT" layoutX="392.0" layoutY="243.0" onMouseClicked="#registrationHandlerClick" prefHeight="68.0" prefWidth="344.0" styleClass="menu-hover">
+                <HBox alignment="CENTER_LEFT" layoutX="392.0" layoutY="335.0" onMouseClicked="#registrationHandlerClick" prefHeight="68.0" prefWidth="344.0" styleClass="menu-hover">
                     <JFXButton buttonType="RAISED" prefHeight="59.0" prefWidth="75.0" style="-fx-background-color: #3a6188#3a6188;" text=".">
                         <graphic>
                             <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
@@ -141,31 +141,23 @@
                         </Text>
                     </VBox>
                 </HBox>
-                <HBox alignment="CENTER_LEFT" layoutX="392.0" layoutY="332.0" onMouseClicked="#notificationClickHandler" prefHeight="68.0" prefWidth="344.0" styleClass="menu-hover">
+                <HBox alignment="CENTER_LEFT" layoutX="392.0" layoutY="245.0" onMouseClicked="#homeClickHandler" prefHeight="68.0" prefWidth="344.0" styleClass="menu-hover">
                     <StackPane>
                         <HBox.margin>
                             <Insets left="10.0" />
                         </HBox.margin>
                         <JFXButton buttonType="RAISED" prefHeight="59.0" prefWidth="75.0" style="-fx-background-color: #3a6188#3a6188;" text=".">
-                            <graphic>
-                                <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                    <Image url="@../../style/icons/icons8-bell-48.png" />
-                                </ImageView>
-                            </graphic>
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../style/icons/icons8-home-24.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                         </JFXButton>
-                        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="20.0" prefWidth="23.0" styleClass="notify-circle">
-                            <StackPane.margin>
-                                <Insets bottom="30.0" left="20.0" />
-                            </StackPane.margin>
-                            <Label text="9+" textFill="WHITE">
-                                <font>
-                                    <Font name="System Bold" size="13.0" />
-                                </font>
-                            </Label>
-                        </HBox>
                     </StackPane>
                     <VBox prefHeight="59.0" prefWidth="271.0" spacing="2.0">
-                        <Text fill="#464444" strokeType="OUTSIDE" strokeWidth="0.0" text="Notifications">
+                        <Text fill="#464444" strokeType="OUTSIDE" strokeWidth="0.0" text="Home">
                             <font>
                                 <Font name="Arial Bold" size="19.0" />
                             </font>
@@ -173,7 +165,7 @@
                                 <Insets left="10.0" top="10.0" />
                             </VBox.margin>
                         </Text>
-                        <Text fill="#575353" strokeType="OUTSIDE" strokeWidth="0.0" text="members go beyond the due date">
+                        <Text fill="#575353" strokeType="OUTSIDE" strokeWidth="0.0" text="Where you can search customers">
                             <font>
                                 <Font name="Helvetica" size="17.0" />
                             </font>
@@ -313,7 +305,7 @@
                         <Font name="Arial" size="18.0" />
                     </font>
                 </JFXButton>
-                <JFXButton buttonType="RAISED" prefHeight="37.0" prefWidth="163.0" styleClass="side-btn" text="Home data" textFill="#e8dcdc">
+                <JFXButton buttonType="RAISED" onAction="#homeClickHandler" prefHeight="37.0" prefWidth="163.0" styleClass="side-btn" text="Home data" textFill="#e8dcdc">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                             <Image url="@../../style/icons/icons8-home-24.png" />

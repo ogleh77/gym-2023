@@ -8,7 +8,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="149.0"
             prefWidth="484.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.gym.controllers.CustomerCardController">
+            fx:controller="com.example.gym.controllers.info.CustomerCardController">
     <ImageView fx:id="customerPhoto" fitHeight="130.0" fitWidth="148.0" layoutX="14.0" layoutY="10.0"
                pickOnBounds="true" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="14.0"
                AnchorPane.rightAnchor="322.0" AnchorPane.topAnchor="10.0">

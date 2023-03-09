@@ -1,6 +1,5 @@
-package com.example.salmaan.entity.main;
+package com.example.gym.entities;
 
-import com.example.salmaan.entity.service.Box;
 import com.jfoenix.controls.JFXButton;
 
 import java.time.LocalDate;
@@ -15,11 +14,11 @@ public class Payments {
     private final String paidBy;
     private final double discount;
     private final boolean poxing;
-    private Box box;
+    // private Box box;
     private final String customerFK;
     private final boolean online;
     private final boolean pending;
-    private JFXButton pendingBtn = new JFXButton("Xidh paymentka");
+    //private JFXButton pendingBtn = new JFXButton("Xidh paymentka");
 
     public Payments(int paymentID, String paymentDate, LocalDate expDate, String month, String year, double amountPaid, String paidBy, double discount, boolean poxing, String customerFK, boolean online, boolean pending) {
         this.paymentID = paymentID;
@@ -34,12 +33,12 @@ public class Payments {
         this.customerFK = customerFK;
         this.online = online;
         this.pending = pending;
-        if (!this.online && !this.isPending()) {
-            pendingBtn.setDisable(true);
-        }
-        if (isPending()) {
-            pendingBtn.setText("Dib u fur");
-        }
+//        if (!this.online && !this.isPending()) {
+//            pendingBtn.setDisable(true);
+//        }
+//        if (isPending()) {
+//            pendingBtn.setText("Dib u fur");
+//        }
     }
 
     public int getPaymentID() {
@@ -78,9 +77,9 @@ public class Payments {
         return poxing;
     }
 
-    public Box getBox() {
-        return box;
-    }
+//    public Box getBox() {
+//        return box;
+//    }
 
     public String getCustomerFK() {
         return customerFK;
@@ -94,14 +93,14 @@ public class Payments {
         return pending;
     }
 
-    public void setBox(Box box) {
-        this.box = box;
-    }
+//    public void setBox(Box box) {
+//        this.box = box;
+//    }
 
-    public JFXButton getPendingBtn() {
-        pendingBtn.setStyle("-fx-background-color: #1e6e66;-fx-text-fill: white;-fx-pref-width: 100;-fx-font-size: 15");
-        return pendingBtn;
-    }
+//    public JFXButton getPendingBtn() {
+//        pendingBtn.setStyle("-fx-background-color: #1e6e66;-fx-text-fill: white;-fx-pref-width: 100;-fx-font-size: 15");
+//        return pendingBtn;
+//    }
 
     @Override
     public String toString() {
@@ -119,7 +118,6 @@ public class Payments {
                 ", paidBy='" + paidBy + '\'' +
                 ", discount=" + discount +
                 ", poxing=" + poxing +
-                ", box=" + box +
                 ", customerFK='" + customerFK + '\'' +
                 ", online=" + online +
                 ", pending=" + pending +

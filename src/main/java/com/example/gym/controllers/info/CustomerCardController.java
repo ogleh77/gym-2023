@@ -1,4 +1,4 @@
-package com.example.gym.controllers;
+package com.example.gym.controllers.info;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

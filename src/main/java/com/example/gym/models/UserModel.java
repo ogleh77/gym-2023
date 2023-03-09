@@ -1,21 +1,19 @@
-package com.example.salmaan.models;
+package com.example.gym.models;
 
-import com.example.salmaan.entities.services.Users;
-import com.example.salmaan.helpers.DbConnection;
-import com.example.salmaan.repository.UserRepo;
+import com.example.gym.entities.service.Users;
+import com.example.gym.helpers.DbConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.*;
 
-public class UserModel implements UserRepo<Users> {
+public class UserModel{
     private final static Connection connection = DbConnection.getConnection();
 
     public UserModel() {
         System.out.println("User model created...");
     }
 
-    @Override
     public void insert(Users users) throws SQLException {
         String insertUserQuery = "INSERT INTO users(first_name, last_name, phone, gender, shift, username, password, image, role) " +
                 "VALUES (?,?,?,?,?,?,?,?,?)";
@@ -35,12 +33,6 @@ public class UserModel implements UserRepo<Users> {
         System.out.println("User inserted..");
     }
 
-    @Override
-    public void update(Users users) {
-
-    }
-
-    @Override
     public ObservableList<Users> fetch() throws SQLException {
         String fetchQuery = "SELECT * FROM users";
         ObservableList<Users> users = FXCollections.observableArrayList();

@@ -4,9 +4,10 @@ module com.example.gym {
     requires AnimateFX;
     requires com.jfoenix;
     requires junit;
+    requires java.sql;
+    requires org.xerial.sqlitejdbc;
     opens com.example.gym to javafx.fxml;
     opens com.example.gym.controllers to javafx.fxml;
-    opens com.example.gym.services to javafx.fxml;
     opens com.example.gym.controllers.main to javafx.fxml;
     opens com.example.gym.controllers.info to javafx.fxml;
     exports com.example.gym;

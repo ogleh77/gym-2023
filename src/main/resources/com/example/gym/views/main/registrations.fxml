@@ -88,7 +88,7 @@
             <Image url="@../../style/icons/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpeg" />
         </ImageView>
     </VBox>
-    <JFXButton fx:id="registerBtn" buttonType="RAISED" layoutX="728.0" layoutY="621.0" onAction="#customerSaveHandler" prefHeight="47.0" prefWidth="128.0" styleClass="btn-save" text="Payment" textFill="#d0cbcb" AnchorPane.bottomAnchor="72.0" AnchorPane.rightAnchor="264.0">
+    <JFXButton fx:id="registerBtn" buttonType="RAISED" layoutX="728.0" layoutY="621.0" onAction="#customerSaveHandler" prefHeight="47.0" prefWidth="128.0" styleClass="btn-save" text="Save" textFill="#d0cbcb" AnchorPane.bottomAnchor="72.0" AnchorPane.rightAnchor="264.0">
         <font>
             <Font name="Arial" size="14.0" />
         </font>
@@ -98,7 +98,7 @@
             <Font size="15.0" />
         </font>
     </JFXButton>
-    <JFXButton buttonType="RAISED" layoutX="822.0" layoutY="545.0" prefHeight="40.0" prefWidth="183.0" styleClass="btn-upload" text="Upload image" textFill="WHITE" AnchorPane.bottomAnchor="148.0" AnchorPane.rightAnchor="170.0">
+    <JFXButton buttonType="RAISED" layoutX="822.0" layoutY="545.0" onAction="#uploadImageHandler" prefHeight="40.0" prefWidth="183.0" styleClass="btn-upload" text="Upload image" textFill="WHITE" AnchorPane.bottomAnchor="148.0" AnchorPane.rightAnchor="170.0">
         <font>
             <Font size="15.0" />
         </font>

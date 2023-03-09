@@ -1,6 +1,8 @@
 package com.example.gym.entities;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Customers {
 
@@ -18,6 +20,7 @@ public class Customers {
     private JFXButton update;
     private JFXButton paymentBtn;
     private JFXButton information;
+    private final ObservableList<Payments> payments;
 
     public Customers(int customerId, String firstName, String middleName, String lastName, String phone, String gander, String shift, String address, String image, double weight, String whoAdded) {
         this.customerId = customerId;
@@ -31,6 +34,15 @@ public class Customers {
         this.image = image;
         this.weight = weight;
         this.whoAdded = whoAdded;
+        this.payments = FXCollections.observableArrayList();
+//        this.update = new JFXButton("update");
+//        this.update.setStyle("-fx-background-color: #1e6e66;-fx-text-fill: white;-fx-pref-width: 100;-fx-font-size: 15");
+//
+//        this.paymentBtn = new JFXButton("Payment");
+//        this.paymentBtn.setStyle("-fx-background-color: dodgerblue;-fx-text-fill: white;-fx-pref-width: 100;-fx-font-size: 15");
+//
+//        this.information = new JFXButton("Information");
+//        this.information.setStyle("-fx-background-color: #328ca8;-fx-text-fill: white;-fx-pref-width: 100;-fx-font-size: 15");
     }
 
     public int getCustomerId() {
@@ -78,30 +90,31 @@ public class Customers {
     }
 
     public JFXButton getUpdate() {
-        this.update = new JFXButton("Update");
-        this.update.setStyle("-fx-background-color: #1e6e66;-fx-text-fill: white;-fx-pref-width: 100;-fx-font-size: 15");
         return update;
     }
 
     public JFXButton getPaymentBtn() {
-        this.paymentBtn = new JFXButton("Payment");
-        this.paymentBtn.setStyle("-fx-background-color: dodgerblue;-fx-text-fill: white;-fx-pref-width: 100;-fx-font-size: 15");
         return paymentBtn;
     }
 
     public JFXButton getInformation() {
-        this.information = new JFXButton("Information");
-        this.information.setStyle("-fx-background-color: #328ca8;-fx-text-fill: white;-fx-pref-width: 100;-fx-font-size: 15");
         return information;
     }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public ObservableList<Payments> getPayments() {
+        return payments;
+    }
 
     @Override
     public String toString() {
         return "\n [customerId: " +
                 customerId + " firstname: " +
                 firstName + "  lastname: " +
-                lastName + " gander " + gander + " phone: " + phone + "\n";
+                lastName + " gander " + gander + " phone: " + phone + "\n" + payments + "\n";
     }
 
 
