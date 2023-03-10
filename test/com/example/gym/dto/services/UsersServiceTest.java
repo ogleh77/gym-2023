@@ -23,7 +23,7 @@ class UsersServiceTest {
         Users user2 = new Users("Hibaaq", "Ali", "4303666", "Female", "Night",
                 user.getUsername(), user.getPassword(), null, user.getRole());
 
-        UsersService.update(user2);
+        UsersService.update(user2, prevUserName);
         System.out.println("After\n " + UsersService.users());
     }
 }

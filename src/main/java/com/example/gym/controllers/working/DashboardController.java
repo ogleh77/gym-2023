@@ -51,7 +51,7 @@ public class DashboardController extends CommonClass implements Initializable {
 
     @FXML
     void addUserHandler(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gym/views2/working/user-creation.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gym/views2/done/user-creation.fxml"));
         Scene scene = new Scene(loader.load());
         Stage stage = new Stage();
         stage.setScene(scene);
