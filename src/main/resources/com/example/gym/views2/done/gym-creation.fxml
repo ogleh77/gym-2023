@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="gymPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="545.0" prefWidth="483.0" style="-fx-background-color: white;" stylesheets="@../../style/css/small-pane.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gym.controllers.working.GymController">
+<AnchorPane fx:id="gymPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="545.0" prefWidth="483.0" style="-fx-background-color: white;" stylesheets="@../../style/css/small-pane.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gym.controllers.done.GymController">
     <children>
         <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="483.0" spacing="140.0" styleClass="top-pane">
             <children>

@@ -1,4 +1,4 @@
-package com.example.gym.controllers.working;
+package com.example.gym.controllers.done;
 
 import com.example.gym.dto.services.BoxService;
 import com.example.gym.dto.services.GymService;
