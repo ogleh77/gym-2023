@@ -20,13 +20,14 @@ public class GymModel {
         ps.setDouble(4, gym.getBoxCost());
         ps.setInt(5, gym.getPendingDate());
         ps.setDouble(6, gym.getMaxDiscount());
-        ps.setString(7, gym.getZaad());
-        ps.setString(8, gym.geteDahab());
+        ps.setInt(7, gym.getZaad());
+        ps.setInt(8, gym.geteDahab());
 
         ps.executeUpdate();
         ps.close();
         System.out.println("Updated");
     }
+
     public Gym currentGym() throws SQLException {
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery("SELECT * FROM gym");
@@ -34,7 +35,7 @@ public class GymModel {
         Gym currentGym = new Gym(rs.getInt("gym_id"), rs.getString("gym_name"),
                 rs.getDouble("fitness_cost"), rs.getDouble("poxing_cost"),
                 rs.getDouble("vipBox"), rs.getDouble("max_discount"), rs.getInt("pending_date"),
-                rs.getString("zaad_merchant"), rs.getString("edahab_merchant"));
+                rs.getInt("zaad_merchant"), rs.getInt("edahab_merchant"));
 
         currentGym.getVipBoxes().setAll(BoxService.fetchBoxes());
         //rs.close();

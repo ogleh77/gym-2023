@@ -1,6 +1,7 @@
 package com.example.gym.dto.services;
 
 import com.example.gym.entities.service.Box;
+import com.example.gym.helpers.CustomException;
 import com.example.gym.models.services.BoxModel;
 import javafx.collections.ObservableList;
 
@@ -11,19 +12,19 @@ public class BoxService {
     private static final BoxModel boxModel = new BoxModel();
 
 
-    public static void insertBox(Box box) throws SQLException {
-        boxModel.insert(box);
-        if (boxes == null) {
-            fetchBoxes().add(box);
+    public static void insertBox(Box box) throws CustomException {
+        try {
+            boxModel.insert(box);
+        } catch (Exception e) {
+            throw new CustomException("Lama diwan gelin karo khanadan fadlan ku celi " + e.getMessage());
         }
-        boxes.add(box);
+
     }
 
     public static void updateBox(Box box) throws SQLException {
         boxModel.update(box);
         box.setReady(!box.isReady());
         int index = findBoxIndex(fetchBoxes(), box.getBoxId());
-
         fetchBoxes().set(index, box);
     }
 

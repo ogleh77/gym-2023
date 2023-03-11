@@ -6,8 +6,8 @@ import javafx.collections.ObservableList;
 public class Gym {
     private int gymId;
     private String gymName;
-    private String zaad;
-    private String eDahab;
+    private int zaad;
+    private int eDahab;
     private double fitnessCost;
     private double poxingCost;
     private double boxCost;
@@ -16,7 +16,7 @@ public class Gym {
 
     private final ObservableList<Box> vipBoxes;
 
-    public Gym(int gymId, String gymName, double fitnessCost, double poxingCost, double boxCost, double maxDiscount, int pendingDate, String zaad, String eDahab) {
+    public Gym(int gymId, String gymName, double fitnessCost, double poxingCost, double boxCost, double maxDiscount, int pendingDate, int zaad, int eDahab) {
         this.gymId = gymId;
         this.gymName = gymName;
         this.fitnessCost = fitnessCost;
@@ -37,11 +37,11 @@ public class Gym {
         return gymName;
     }
 
-    public String getZaad() {
+    public int getZaad() {
         return zaad;
     }
 
-    public String geteDahab() {
+    public int geteDahab() {
         return eDahab;
     }
 
@@ -73,11 +73,11 @@ public class Gym {
         this.gymName = gymName;
     }
 
-    public void setZaad(String zaad) {
+    public void setZaad(int zaad) {
         this.zaad = zaad;
     }
 
-    public void seteDahab(String eDahab) {
+    public void seteDahab(int eDahab) {
         this.eDahab = eDahab;
     }
 
