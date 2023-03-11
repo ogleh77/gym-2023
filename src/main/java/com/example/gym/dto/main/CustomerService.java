@@ -16,28 +16,25 @@ public class CustomerService {
 
     public static void insertOrUpdateCustomer(Customers customer, boolean newCustomer, Users activeUser) throws SQLException, InterruptedException {
         if (allCustomersList == null)
-            fetchAllCustomer(activeUser);
-
-        try {
-            if (newCustomer) {
-                insertCustomer(customer);
-            } else {
-                updateCustomer(customer);
+            try {
+                if (newCustomer) {
+                    insertCustomer(customer);
+                } else {
+                    updateCustomer(customer);
+                }
+            } catch (SQLException e) {
+                if (e.getMessage().contains("(UNIQUE constraint failed: customers.phone)")) {
+                    throw new CustomException("Lanbarka " + customer.getPhone() + " hore ayaa loo diwaan geshay fadlan dooro lanbarkale");
+                } else {
+                    throw new CustomException("Khalad ayaaa ka dhacay " + e.getMessage());
+                }
             }
-        } catch (SQLException e) {
-            if (e.getMessage().contains("(UNIQUE constraint failed: customers.phone)")) {
-                throw new CustomException("Lanbarka " + customer.getPhone() + " hore ayaa loo diwaan geshay fadlan dooro lanbarkale");
-            } else {
-                throw new CustomException("Khalad ayaaa ka dhacay " + e.getMessage());
-            }
-        }
 
         Thread.sleep(1000);
     }
 
     private static void insertCustomer(Customers customer) throws SQLException {
         customerModel.insert(customer);
-        allCustomersList.add(customer);
     }
 
     private static void updateCustomer(Customers customer) throws SQLException {
@@ -50,7 +47,6 @@ public class CustomerService {
     public static ObservableList<Customers> fetchAllCustomer(Users activeUser) throws SQLException {
         if (allCustomersList == null) {
             allCustomersList = customerModel.fetchAllCustomers(activeUser);
-            // Collections.sort(allCustomersList);
         }
         return allCustomersList;
     }
@@ -58,7 +54,6 @@ public class CustomerService {
     public static ObservableList<Customers> fetchOfflineCustomer(Users activeUser) throws SQLException {
         if (offlineCustomers == null) {
             offlineCustomers = customerModel.fetchOfflineCustomers(activeUser);
-            // Collections.sort(allCustomersList);
         }
         return offlineCustomers;
     }
@@ -67,7 +62,6 @@ public class CustomerService {
         System.out.println("Called");
         if (onlineCustomers == null) {
             onlineCustomers = customerModel.fetchOnlineCustomers(activeUser);
-
             System.out.println("Outs init...");
             // Collections.sort(allCustomersList);
         }

@@ -17,7 +17,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" styleClass="long-pane" stylesheets="@../../style/css/long-pane.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gym.controllers.main.PaymentsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" styleClass="long-pane" stylesheets="@../../style/css/long-pane.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gym.controllers.working.PaymentController">
     <effect>
         <DropShadow height="12.11" radius="5.555" spread="0.01" width="12.11">
             <color>
@@ -67,7 +67,7 @@
         </font>
     </Label>
     <ComboBox fx:id="paidBy" layoutX="896.0" layoutY="325.0" prefHeight="34.0" prefWidth="161.0" promptText="paid by" AnchorPane.rightAnchor="93.0" />
-    <Label fx:id="paymentInfo" layoutX="167.0" layoutY="637.0" prefHeight="24.0" prefWidth="366.0" text="BUUXI QAYBTA PAYMENT KA OO QUDHA" textFill="#328ca8">
+    <Label fx:id="paymentInfo" layoutX="113.0" layoutY="640.0" prefHeight="24.0" prefWidth="510.0" text="BUUXI QAYBTA PAYMENT KA OO QUDHA" textFill="#328ca8">
         <font>
             <Font name="Tahoma Bold" size="15.0" />
         </font>

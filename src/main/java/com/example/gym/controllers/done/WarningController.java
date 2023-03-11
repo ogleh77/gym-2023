@@ -1,4 +1,4 @@
-package com.example.gym.controllers.working;
+package com.example.gym.controllers.done;
 
 import com.example.gym.entities.main.Customers;
 import com.example.gym.helpers.CommonClass;
@@ -10,8 +10,6 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -36,7 +34,7 @@ public class WarningController extends CommonClass implements Initializable {
             FXMLLoader loader;
             AnchorPane anchorPane;
             for (Customers customer : outdatedCustomers) {
-                loader = new FXMLLoader(getClass().getResource("/com/example/gym/views2/working/customer-card.fxml"));
+                loader = new FXMLLoader(getClass().getResource("/com/example/gym/views2/done/customer-card.fxml"));
                 try {
                     anchorPane = loader.load();
                     CardController controller = loader.getController();

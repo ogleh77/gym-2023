@@ -9,7 +9,7 @@
 <?import javafx.scene.text.*?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="149.0"
             prefWidth="484.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gym.controllers.working.CardController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gym.controllers.done.CardController">
     <effect>
         <DropShadow>
             <color>

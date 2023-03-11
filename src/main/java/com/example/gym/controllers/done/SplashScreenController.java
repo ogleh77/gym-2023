@@ -1,9 +1,7 @@
 package com.example.gym.controllers.done;
 
 import com.example.gym.HelloApplication;
-import com.example.gym.controllers.working.WarningController;
 import com.example.gym.dto.main.CustomerService;
-import com.example.gym.dto.services.UsersService;
 import com.example.gym.entities.main.Customers;
 import com.example.gym.entities.main.Payments;
 import com.example.gym.entities.service.Users;
@@ -45,7 +43,7 @@ public class SplashScreenController extends CommonClass implements Initializable
     public void initialize(URL location, ResourceBundle resources) {
 
         FetchOnlineCustomersByGander.setOnSucceeded(e -> {
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/gym/views2/working/warning.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/gym/views2/done/warning.fxml"));
             Scene scene = null;
             Stage stage = new Stage();
             try {

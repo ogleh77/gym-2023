@@ -6,8 +6,8 @@ import javafx.collections.ObservableList;
 
 public class Customers implements Comparable<Customers> {
     private final int customerId;
-    private String firstName;
-    private String lastName;
+    private final String firstName;
+    private final String lastName;
     private final String middleName;
     private final String phone;
     private final String gander;
@@ -39,6 +39,14 @@ public class Customers implements Comparable<Customers> {
         this.weight = weight;
         this.whoAdded = whoAdded;
         this.payments = FXCollections.observableArrayList();
+
+        this.information = new JFXButton("information");
+        this.paymentBtn = new JFXButton("payment");
+        this.update = new JFXButton("update");
+        this.information.setStyle("-fx-background-color: #1e6e66;-fx-text-fill: white;-fx-pref-width: 100;-fx-font-size: 15");
+        this.update.setStyle("-fx-background-color: dodgerblue;-fx-text-fill: white;-fx-pref-width: 100;-fx-font-size: 15");
+        this.paymentBtn.setStyle("-fx-background-color: #145ab6;-fx-text-fill: white;-fx-pref-width: 80;-fx-font-size: 14");
+
     }
 
     public int getCustomerId() {
@@ -90,27 +98,14 @@ public class Customers implements Comparable<Customers> {
     }
 
     public JFXButton getInformation() {
-        if (information == null) {
-            information = new JFXButton("information");
-            information.setStyle("-fx-background-color: #1e6e66;-fx-text-fill: white;-fx-pref-width: 130;-fx-font-size: 14");
-        }
         return information;
     }
 
     public JFXButton getPaymentBtn() {
-        if (paymentBtn == null) {
-            this.paymentBtn = new JFXButton("payment");
-            paymentBtn.setStyle("-fx-background-color: #145ab6;-fx-text-fill: white;-fx-pref-width: 80;-fx-font-size: 14");
-        }
         return paymentBtn;
     }
 
     public JFXButton getUpdate() {
-        if (update == null) {
-            update = new JFXButton("update");
-            this.update = new JFXButton("update");
-            update.setStyle("-fx-background-color: dodgerblue;-fx-text-fill: white;-fx-pref-width: 80;-fx-font-size: 14");
-        }
         return update;
     }
 
