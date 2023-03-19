@@ -1,5 +1,6 @@
 package com.example.gym.dto.main;
 
+import com.example.gym.dto.services.GymService;
 import com.example.gym.entities.main.Customers;
 import com.example.gym.entities.main.Payments;
 import com.example.gym.entities.service.Pending;
@@ -46,20 +47,20 @@ public class PaymentService {
         LocalDate exp = payment.getExpDate();
         LocalDate pendingDate = LocalDate.now();
         int daysRemind = Period.between(pendingDate, exp).getDays();
+
         if (daysRemind <= allowedDays) {
-            throw new CustomException("Fadlan lama xidhi karo event kan waayo wuxu ka hoseya wakhtiga lo asteyey");
+            throw new CustomException("Fadlan lama xidhi karo event kan waayo\n" +
+                    " wuxu ka hoseya wakhtiga loo asteyey oo ah " + GymService.getGym().getPendingDate() + " malmood");
         }
-
-
         paymentModel.pendPayment(payment.getBox(), payment.getPaymentID(), daysRemind);
     }
 
-    public static void updatePendingPayment(Pending pending) throws SQLException {
-        int daysRemain = pending.getDaysRemain();
-
-        paymentModel.updatePendingPayment(LocalDate.now().plusDays(daysRemain), pending);
-
-    }
+//    public static void updatePendingPayment(Pending pending) throws SQLException {
+//        int daysRemain = pending.getDaysRemain();
+//
+//        paymentModel.updatePendingPayment(LocalDate.now().plusDays(daysRemain), pending);
+//
+//    }
 
     public static ObservableList<Pending> fetchPendedPayment() throws SQLException {
         return paymentModel.fetchPendedPayment();

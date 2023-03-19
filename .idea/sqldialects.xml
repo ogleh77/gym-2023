@@ -5,5 +5,6 @@
     <file url="file://$PROJECT_DIR$/src/main/java/com/example/gym/models/services/BoxModel.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/example/gym/models/services/GymModel.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/example/gym/models/services/UserModel.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/test/com/example/gym/dto/main/PaymentServiceTest.java" dialect="GenericSQL" />
   </component>
 </project>

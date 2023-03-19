@@ -27,6 +27,7 @@ public class CustomerModel {
 
     public ObservableList<Customers> fetchAllCustomers(Users activeUser) throws SQLException {
         System.out.println("Called customers");
+
         ObservableList<Customers> customers = FXCollections.observableArrayList();
 
         String fetchCustomers = fetchByRoleAndGander(activeUser.getGender(), activeUser.getRole());
@@ -110,6 +111,7 @@ public class CustomerModel {
                 .setPhone(rs.getString("phone"))
                 .setImage(rs.getString("image"))
                 .setWhoAdded(rs.getString("who_added"))
+                .setShift(rs.getString("shift"))
                 .setWeight(rs.getDouble("weight")).build();
 
         customer.setPayments(payments);

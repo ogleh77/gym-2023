@@ -17,9 +17,10 @@ public class Payments {
     private final boolean poxing;
     private Box box;
     private final String customerFK;
-    private final boolean online;
-    private final boolean pending;
-    // private JFXButton pendingBtn = new JFXButton("Xidh paymentka");
+    private boolean online;
+    private boolean pending;
+
+    private JFXButton pendingBtn = new JFXButton("Xanib");
 
     public Payments(int paymentID, String paymentDate, LocalDate expDate, String month, String year, double amountPaid, String paidBy, double discount, boolean poxing, String customerFK, boolean online, boolean pending) {
         this.paymentID = paymentID;
@@ -34,14 +35,13 @@ public class Payments {
         this.customerFK = customerFK;
         this.online = online;
         this.pending = pending;
+        this.pendingBtn.setStyle("-fx-background-color: #1e6e66;-fx-text-fill: white;-fx-pref-width: 100;-fx-font-size: 15");
 
-//        if (!this.online && !this.isPending()) {
-//            pendingBtn.setDisable(true);
-//        }
-//        if (isPending()) {
-//            pendingBtn.setText("Dib u fur");
-//        }
+        if (!this.online) {
+            pendingBtn.setDisable(true);
+        }
     }
+
 
     public int getPaymentID() {
         return paymentID;
@@ -99,10 +99,17 @@ public class Payments {
         this.box = box;
     }
 
-//    public JFXButton getPendingBtn() {
-//        pendingBtn.setStyle("-fx-background-color: #1e6e66;-fx-text-fill: white;-fx-pref-width: 100;-fx-font-size: 15");
-//        return pendingBtn;
-//    }
+    public JFXButton getPendingBtn() {
+        return pendingBtn;
+    }
+
+    public void setOnline(boolean online) {
+        this.online = online;
+    }
+
+    public void setPending(boolean pending) {
+        this.pending = pending;
+    }
 
     @Override
     public String toString() {

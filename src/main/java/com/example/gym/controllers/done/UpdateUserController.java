@@ -274,7 +274,5 @@ public class UpdateUserController extends CommonClass implements Initializable {
         String role = superAdmin.isSelected() ? "super_admin" : "admin";
         updatingUser = new Users(Integer.parseInt(idFeild.getText()), firstname.getText().trim(), lastname.getText().trim(), phone.getText().trim(), gander,
                 shift.getValue(), username.getText().trim(), password.getText().trim(), image, role);
-
-
     }
 }

@@ -54,6 +54,15 @@ public class PaymentModel {
 
         connection.setAutoCommit(false);
 
+        //First check if the payment is already in pending table
+
+        boolean alreadyPended = checkIfExist(paymentId);
+
+        if (alreadyPended) {
+
+        }
+
+
         try (Statement statement = connection.createStatement()) {
 
             String pendQuery = "INSERT INTO pending(days_remain,payment_fk)" + "VALUES (" + daysRemind + "," + paymentId + ")";
@@ -79,14 +88,26 @@ public class PaymentModel {
         }
     }
 
-    public void updatePendingPayment(LocalDate remainDate, Pending pending) throws SQLException {
+    private boolean checkIfExist(int paymentID) throws SQLException {
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("SELECT * FROM pending WHERE payment_fk=" + paymentID);
+        if (rs.next()) {
+            System.out.println("Founded");
+            return true;
+        } else {
+            System.out.println("Not exist");
+        }
+        return false;
+    }
+
+    public void updatePendingPayment(LocalDate remainDate, Payments payment) throws SQLException {
         connection.setAutoCommit(false);
 
         try {
-            String unPendPayment = "UPDATE payments SET is_online=true, pending=false," + "exp_date='" + remainDate + "' WHERE payment_id=" + pending.getPayment();
+            String unPendPayment = "UPDATE payments SET is_online=true, pending=false," + "exp_date='" + remainDate + "' WHERE payment_id=" + payment.getPaymentID();
 
 
-            String setPendingFalse = "UPDATE pending SET is_pending=false" + " WHERE pending_id=" + pending.getPendingId();
+            String setPendingFalse = "UPDATE pending SET is_pending=false WHERE payment_fk=" + payment.getPaymentID();
 
             Statement statement = connection.createStatement();
 
@@ -103,6 +124,7 @@ public class PaymentModel {
             throw e;
         }
     }
+
 
     public void offPayment(Payments payment) throws SQLException {
         connection.setAutoCommit(false);
@@ -169,6 +191,7 @@ public class PaymentModel {
 
     public ObservableList<Payments> fetchAllCustomersPayments(String phone) throws SQLException {
         //-------Fetch payments according to customer that belongs--------tested......
+
         ObservableList<Payments> payments = FXCollections.observableArrayList();
         Statement statement = connection.createStatement();
 
