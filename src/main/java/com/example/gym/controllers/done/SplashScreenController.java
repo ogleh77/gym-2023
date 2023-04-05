@@ -1,4 +1,4 @@
-package com.example.gym.controllers.working;
+package com.example.gym.controllers.done;
 
 import com.example.gym.dto.main.CustomerService;
 import com.example.gym.entities.main.Customers;
@@ -44,6 +44,8 @@ public class SplashScreenController extends CommonClass implements Initializable
     }
 
     public Task<Void> FetchOnlineCustomersByGander = new Task<Void>() {
+        private final LocalDate now = LocalDate.now();
+
         @Override
         protected Void call() throws Exception {
             int i = 0;
@@ -54,15 +56,17 @@ public class SplashScreenController extends CommonClass implements Initializable
                 updateMessage("Loading.. " + i + "%");
                 updateProgress(i, offlineCustomers.size());
                 for (Payments payment : customer.getPayments()) {
-                    if (LocalDate.now().plusDays(2).isEqual(payment.getExpDate())
-                            || LocalDate.now().plusDays(1).isEqual(payment.getExpDate())
-                            || LocalDate.now().isEqual(payment.getExpDate())) {
+                    LocalDate expDate = payment.getExpDate();
+                    if (now.plusDays(2).isEqual(expDate)
+                            || now.plusDays(1).isEqual(expDate)
+                            || now.isEqual(expDate)) {
                         warningList.add(customer);
-                        System.out.println(customer.getFirstName() + " " + payment.getExpDate() + " Warning");
-                    } else if (LocalDate.now().isBefore(payment.getExpDate())) {
-                        System.out.println(customer.getFirstName() + " " + payment.getExpDate() + " Is active");
+                        System.out.println(customer.getFirstName() + " " + expDate + " Warning");
+                    } else if (now.isBefore(expDate)) {
+                        System.out.println(customer.getFirstName() + " " + expDate + " Is active");
                     } else {
-                        System.out.println(customer.getFirstName() + " " + payment.getExpDate() + " Outdated");
+                        // TODO: 05/04/2023 Make the payment of
+                        System.out.println(customer.getFirstName() + " " + expDate + " Outdated");
                     }
                 }
                 Thread.sleep(100);

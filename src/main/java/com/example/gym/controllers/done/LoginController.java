@@ -2,7 +2,6 @@ package com.example.gym.controllers.done;
 
 
 import animatefx.animation.FadeOut;
-import com.example.gym.controllers.working.SplashScreenController;
 import com.example.gym.dto.services.UsersService;
 import com.example.gym.entities.service.Users;
 import com.example.gym.helpers.CommonClass;
@@ -118,7 +117,7 @@ public class LoginController extends CommonClass implements Initializable {
 
 
     private void openSplash() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gym/views2/working/splash-screen.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gym/views2/done/splash-screen.fxml"));
         Scene scene = new Scene(loader.load());
         SplashScreenController controller = loader.getController();
         controller.setActiveUser(userNameChooser.getValue());

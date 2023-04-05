@@ -10,7 +10,7 @@
 <?import javafx.scene.text.*?>
 <AnchorPane prefHeight="434.0" prefWidth="596.0" styleClass="small-pane" stylesheets="@../../style/css/small-pane.css"
             xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.gym.controllers.working.SplashScreenController">
+            fx:controller="com.example.gym.controllers.done.SplashScreenController">
     <Label fx:id="welcomeUserName" layoutX="62.0" layoutY="351.0" prefHeight="24.0" prefWidth="162.0" text="Welcome "
            textFill="#3e6157">
         <font>

@@ -19,14 +19,16 @@ public class UsersService {
         }
     }
 
-    public static void insertUser(Users user) throws CustomException {
+    public static void insertUser(Users user) throws SQLException {
         try {
             userModel.insert(user);
         } catch (SQLException e) {
-            if (e.getMessage().contains("(UNIQUE constraint failed: users.username)")) {
-                throw new CustomException("username-kan hore ayaa loo isticmalay fadlan dooro mid kale");
+            if (e.getMessage().contains("(UNIQUE constraint failed: users.username")) {
+                throw new CustomException("username ka " + user.getUsername() + " horaa lo isticmalay");
+            } else if (e.getMessage().contains("(UNIQUE constraint failed: users.phone")) {
+                throw new CustomException("lanbar ka " + user.getPhone() + " horaa lo isticmalay");
             } else {
-                throw new CustomException("Khalad baa ka dhacay " + e.getMessage());
+                throw e;
             }
         }
     }
