@@ -5,6 +5,7 @@ import com.example.gym.entities.main.PaymentBuilder;
 import com.example.gym.entities.main.Payments;
 import com.example.gym.entities.service.Box;
 import com.example.gym.entities.service.Pending;
+import com.example.gym.helpers.CustomException;
 import com.example.gym.helpers.DbConnection;
 import com.example.gym.models.services.DailyReportDTO;
 import javafx.collections.FXCollections;
@@ -55,8 +56,7 @@ public class PaymentModel {
 
         try (Statement statement = connection.createStatement()) {
 
-            String pendQuery = "INSERT INTO pending(days_remain,payment_fk)" +
-                    "VALUES (" + daysRemind + "," + paymentId + ")";
+            String pendQuery = "INSERT INTO pending(days_remain,payment_fk)" + "VALUES (" + daysRemind + "," + paymentId + ")";
 
             String paymentQuery = "UPDATE payments SET is_online=false,pending=true WHERE payment_id=" + paymentId;
 
@@ -83,12 +83,10 @@ public class PaymentModel {
         connection.setAutoCommit(false);
 
         try {
-            String unPendPayment = "UPDATE payments SET is_online=true, pending=false," +
-                    "exp_date='" + remainDate + "' WHERE payment_id=" + pending.getPayment();
+            String unPendPayment = "UPDATE payments SET is_online=true, pending=false," + "exp_date='" + remainDate + "' WHERE payment_id=" + pending.getPayment();
 
 
-            String setPendingFalse = "UPDATE pending SET is_pending=false" +
-                    " WHERE pending_id=" + pending.getPendingId();
+            String setPendingFalse = "UPDATE pending SET is_pending=false" + " WHERE pending_id=" + pending.getPendingId();
 
             Statement statement = connection.createStatement();
 
@@ -106,6 +104,26 @@ public class PaymentModel {
         }
     }
 
+    public void offPayment(Payments payment) throws SQLException {
+        connection.setAutoCommit(false);
+        try {
+            Statement statement = connection.createStatement();
+            String query = "UPDATE payments SET is_online=false WHERE payment_id=" + payment.getPaymentID();
+            if (payment.getBox() != null) {
+                BoxService.updateBox(payment.getBox());
+            }
+            statement.executeUpdate(query);
+            connection.commit();
+        } catch (SQLException e) {
+            connection.rollback();
+            e.printStackTrace();
+            throw new CustomException("Khalad ayaa dhacay mmarka lama off garayn paymentkan");
+        }
+
+
+        // TODO: 09/03/2023 Make paymenr off insha Allah
+    }
+
     public ObservableList<Pending> fetchPendedPayment() throws SQLException {
         ObservableList<Pending> pendings = FXCollections.observableArrayList();
         Statement statement = connection.createStatement();
@@ -115,9 +133,7 @@ public class PaymentModel {
 
             payment = getPayments(rs);
 
-            Pending pending = new Pending(rs.getInt("pending_id"),
-                    rs.getString("pending_date"),
-                    rs.getInt("days_remain"), payment, rs.getBoolean("is_pending"));
+            Pending pending = new Pending(rs.getInt("pending_id"), rs.getString("pending_date"), rs.getInt("days_remain"), payment, rs.getBoolean("is_pending"));
 
             pendings.add(pending);
 
@@ -157,8 +173,7 @@ public class PaymentModel {
         Statement statement = connection.createStatement();
 
         Payments payment = null;
-        ResultSet rs = statement.executeQuery("SELECT * FROM payments LEFT JOIN box b on payments.box_fk = b.box_id " +
-                "WHERE customer_phone_fk=" + phone + " ORDER BY exp_date DESC");
+        ResultSet rs = statement.executeQuery("SELECT * FROM payments LEFT JOIN box b on payments.box_fk = b.box_id " + "WHERE customer_phone_fk=" + phone + " ORDER BY exp_date DESC");
 
         return getPayments(payments, statement, rs);
     }
@@ -183,7 +198,8 @@ public class PaymentModel {
 
 
     //-------------------helpers------------------
-    private ObservableList<Payments> getPayments(ObservableList<Payments> payments, Statement statement, ResultSet rs) throws SQLException {
+    private ObservableList<Payments> getPayments(ObservableList<Payments> payments, Statement
+            statement, ResultSet rs) throws SQLException {
         Payments payment;
         while (rs.next()) {
 
@@ -205,20 +221,7 @@ public class PaymentModel {
 
     private Payments getPayments(ResultSet rs) throws SQLException {
         Payments payment;
-        payment = new PaymentBuilder()
-                .setPaymentID(rs.getInt("payment_id"))
-                .setPaymentDate(rs.getString("payment_date"))
-                .setExpDate(LocalDate.parse(rs.getString("exp_date")))
-                .setAmountPaid(rs.getDouble("amount_paid"))
-                .setPaidBy(rs.getString("paid_by"))
-                .setPoxing(rs.getBoolean("poxing"))
-                .setDiscount(rs.getDouble("discount"))
-                .setCustomerFK(rs.getString("customer_phone_fk"))
-                .setOnline(rs.getBoolean("is_online"))
-                .setYear(rs.getString("year"))
-                .setPending(rs.getBoolean("pending"))
-                .setMonth(rs.getString("month"))
-                .build();
+        payment = new PaymentBuilder().setPaymentID(rs.getInt("payment_id")).setPaymentDate(rs.getString("payment_date")).setExpDate(LocalDate.parse(rs.getString("exp_date"))).setAmountPaid(rs.getDouble("amount_paid")).setPaidBy(rs.getString("paid_by")).setPoxing(rs.getBoolean("poxing")).setDiscount(rs.getDouble("discount")).setCustomerFK(rs.getString("customer_phone_fk")).setOnline(rs.getBoolean("is_online")).setYear(rs.getString("year")).setPending(rs.getBoolean("pending")).setMonth(rs.getString("month")).build();
         return payment;
     }
 

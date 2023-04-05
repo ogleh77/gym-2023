@@ -1,8 +1,9 @@
 package com.example.gym.dto.main;
 
+import com.example.gym.entities.main.Payments;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.sql.SQLException;
 
 class PaymentServiceTest {
 
@@ -28,5 +29,13 @@ class PaymentServiceTest {
 
     @Test
     void fetchPendedPayment() {
+    }
+
+    @Test
+    void setPaymentOff() throws SQLException {
+        Payments payment = PaymentService.fetchCustomersOnlinePayment("4476619").get(0);
+        System.out.println(payment);
+
+        PaymentService.setPaymentOff(payment);
     }
 }

@@ -24,6 +24,10 @@ public class PaymentService {
         }
     }
 
+    public static void setPaymentOff(Payments payment) throws SQLException {
+        paymentModel.offPayment(payment);
+    }
+
     public static ObservableList<Payments> fetchCustomersOfflinePayment(String customerPhone) throws SQLException {
         return paymentModel.fetchCustomersOfflinePayment(customerPhone);
     }

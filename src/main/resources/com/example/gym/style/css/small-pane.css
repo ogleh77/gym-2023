@@ -1,9 +1,11 @@
 .small-pane {
     -fx-background-color: white;
+    -fx-pref-width: 596;
+    -fx-pref-height: 434;
 }
 
 .top-pane {
-    -fx-background-color: #3aaacc;
+    -fx-background-color: #2B4865;
     /*-fx-pref-width: 1150;*/
     /*-fx-pref-height: 40;*/
 }
@@ -24,7 +26,7 @@
     -fx-font-weight: bold;
 }
 .btn-save {
-    -fx-background-color: #328ca8;
+    -fx-background-color: #2B4865;
     -fx-font-family: Arial;
     -fx-font-size: 16;
     -fx-text-fill: white;
