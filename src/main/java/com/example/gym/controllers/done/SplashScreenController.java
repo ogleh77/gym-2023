@@ -1,6 +1,9 @@
 package com.example.gym.controllers.done;
 
+import com.example.gym.HelloApplication;
+import com.example.gym.controllers.working.WarningController;
 import com.example.gym.dto.main.CustomerService;
+import com.example.gym.dto.services.UsersService;
 import com.example.gym.entities.main.Customers;
 import com.example.gym.entities.main.Payments;
 import com.example.gym.entities.service.Users;
@@ -9,10 +12,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -37,9 +45,19 @@ public class SplashScreenController extends CommonClass implements Initializable
     public void initialize(URL location, ResourceBundle resources) {
 
         FetchOnlineCustomersByGander.setOnSucceeded(e -> {
-            System.out.println(warningList);
-            System.out.println();
-            System.out.println(offlineCustomers);
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/gym/views2/working/warning.fxml"));
+            Scene scene = null;
+            Stage stage = new Stage();
+            try {
+                scene = new Scene(fxmlLoader.load());
+                WarningController controller = fxmlLoader.getController();
+                controller.setOutdatedCustomers(warningList);
+                stage.setScene(scene);
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.show();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
         });
     }
 
